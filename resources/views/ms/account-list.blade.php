@@ -14,6 +14,15 @@
   <link rel="stylesheet" href="./layui/css/global.css" charset="utf-8">
 </head>
 <body>
+<div class="layui-header header header-extends" style="background-color: #24262F;">
+    <div class="layui-container">
+        <div class="layui-form component" lay-filter="LAY-site-header-component"></div>
+        <ul class="layui-nav">
+            <li class="layui-nav-item layui-hide-xs"><a href="/login">登陆</a></li>
+            <li class="layui-nav-item layui-hide-xs"><a href="/register">注册</a></li>
+        <span class="layui-nav-bar" style="left: 63px; width: 0px; opacity: 0; top: 42px;"></span></ul>
+    </div>
+</div>
 <div class="fly-extend-banner">
 
     <h1 class="fly-extend-banner-title">账号信息查询平台</h1>
