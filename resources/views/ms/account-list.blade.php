@@ -70,13 +70,13 @@
         <li class="layui-col-sm12 layui-col-md12">
             <div class="fly-extend-list layui-card">
                 <div class="fly-extend-list-header">
-                    <h2 class="fly-extend-title layui-elip"><a href="#">R1 280 阿黛尔</a>
-                        <div class="layui-badge layui-bg-green layui-hide-xs"> 1w5</div>
+                    <h2 class="fly-extend-title layui-elip"><a href="/account-info?id={{$row['id']}}" target="_blank">{{$row['title']}}</a>
+                        <div class="layui-badge layui-bg-green layui-hide-xs">{{$row['price']}}元</div>
                     </h2>
                 </div>
-                <a href="#" target="_blank">
+                <a href="/account-info?id={{$row['id']}}" target="_blank">
                     <div class="fly-extend-list-desc">
-                    <p> 60k ror4 7set  5解</p>
+                    <p>{{$row['desc']}}</p>
                     </div>
                 </a>
             </div>
