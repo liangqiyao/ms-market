@@ -22,6 +22,8 @@
             <div class="fly-extend-list-header">
                 <h2 class="fly-extend-title layui-elip">R1 男 阿黛尔  280  40t
                     <div class="layui-badge layui-bg-green layui-hide-xs">1888元</div>
+                    <!-- 点击获取 -->
+                    <div class="layui-badge layui-bg-blue layui-hide-xs">联系方式：QQ123456787</div>
                 </h2>
             </div>
             <div>
@@ -37,6 +39,7 @@
       </div>
     </div>
 
+
     <!-- 装备情况 -->
 
     <div class="layui-col-md12">
@@ -44,63 +47,92 @@
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
             <legend>主号信息</legend>
         </fieldset>
+        
         <div class="layui-bg-gray" style="padding: 30px;">
-            <div class="layui-collapse" lay-accordion="">
-                <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">装备</h2>
-                    <div class="layui-colla-content">
-                        <table class="layui-table" lay-skin="line">
-                            <colgroup>
-                                <col width="150">
-                                <col width="150">
-                                <col width="200">
-                                <col>
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>名称</th>
-                                    <th>星星</th>
-                                    <th>潜能</th>
-                                    <th>火花</th>
-                                </tr> 
-                            </thead>
-                            <tbody>
-                                <tr>
-                                <td>超贝</td>
-                                <td>30</td>
-                                <td>30%</td>
-                                <td>22</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-collapse" lay-accordion="">
-                <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">怪卡</h2>
-                    <div class="layui-colla-content">
-                        <p>伟大的科学家</p>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-collapse" lay-accordion="">
-                <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">6转技能</h2>
-                    <div class="layui-colla-content">
-                        <p>伟大的科学家</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="layui-collapse" lay-accordion="">
-                <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">暖暖</h2>
-                    <div class="layui-colla-content">
-                        <p>伟大的科学家</p>
-                    </div>
-                </div>
-            </div>
+<div class="layui-tab  layui-tab-brief">
+<ul class="layui-tab-title">
+<li class="layui-this">装备</li>
+<li>怪卡</li>
+<li>6转</li>
+<li>暖暖</li>
+</ul>
+<div class="layui-tab-content">
+<div class="layui-tab-item layui-show">
+    <table class="layui-table" lay-skin="line">
+    <colgroup>
+        <col width="150">
+        <col width="150">
+        <col width="200">
+        <col>
+    </colgroup>
+    <thead>
+        <tr>
+            <th>名称</th>
+            <th>星星</th>
+            <th>潜能</th>
+            <th>火花</th>
+        </tr> 
+    </thead>
+    <tbody>
+        @foreach($data['equip'] as $k=>$v)
+        <tr>
+            <td>{{$v['name']}}</td>
+            <td>{{$v['star']}}</td>
+            <td>{{$v['stat']}}%</td>
+            <td>{{$v['blame']}}</td>
+        </tr>
+        @endforeach
+    </tbody>
+    </table>    
+
+</div>
+<div class="layui-tab-item">
+    <!--怪卡  bd => red     -->
+    @foreach($data['guaika'] as $k=>$v)
+    <span class="layui-badge layui-bg-red">{{$v}}</span>
+    @endforeach
+</div>
+<div class="layui-tab-item">
+    <!-- 6转 -->
+    <table class="layui-table" lay-skin="line">
+    <colgroup>
+        <col width="150">
+        <col width="150">
+        <col width="200">
+        <col>
+    </colgroup>
+    <thead>
+        <tr>
+            <th>名称</th>
+            <th>等级</th>
+            <th>距离满级还差</th>
+            <th>预计多少瓶</th>
+        </tr> 
+    </thead>
+    <tbody>
+        @foreach($data['hexa'] as $k=>$v)
+        <tr>
+            <td>{{$k}}</td>
+            <td>{{$v}}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        @endforeach
+    </tbody>
+    </table>    
+</div>
+<div class="layui-tab-item">
+    <!-- 暖暖 -->
+    <blockquote class="layui-elem-quote layui-quote-nm">
+
+    {{$data['nuannuan']}}
+
+    </blockquote>
+</div>
+</div>
+</div>
+
       </div>
     </div>
     </div>
@@ -116,8 +148,9 @@
 <table class="layui-table" lay-skin="line">
   <colgroup>
     <col width="150">
-    <col width="150">
-    <col width="200">
+    <col width="100">
+    <col width="100">
+    <col width="100">
     <col>
   </colgroup>
   <thead>
@@ -125,25 +158,20 @@
       <th>职业</th>
       <th>等级</th>
       <th>战力</th>
-      <th>搬到</th>
+      <th>搬到<i class="layui-icon layui-icon-help" id='tips-bd'></i>  </th>
       <th>描述</th>
     </tr> 
   </thead>
   <tbody>
-    <tr>
-      <td>刀飞</td>
-      <td>260</td>
-      <td>60M</td>
-      <td>NLW</td>
-      <td>已6转，9件22，AU齐，3BD+3大回 已6转，9件22，AU齐，3BD+3大回 已6转，9件22，AU齐，3BD+3大回 已6转，9件22，AU齐，3BD+3大回</td>
-    </tr>
-    <tr>
-      <td>刀飞</td>
-      <td>260</td>
-      <td>60M</td>
-      <td>NLW</td>
-      <td>已6转，9件22，AU齐，3BD+3大回 已6转，9件22，AU齐，3BD+3大回 已6转，9件22，AU齐，3BD+3大回 已6转，9件22，AU齐，3BD+3大回</td>
-    </tr> 
+   @foreach($data['eggs'] as $k=>$v)
+        <tr>
+            <td>{{$v['job']}}</td>
+            <td>{{$v['level']}}</td>
+            <td>{{$v['power']}}M</td>
+            <td>{{$v['fw']}}</td>
+            <td>{{$v['desc']}}</td>
+        </tr>
+   @endforeach()
   </tbody>
 </table>
       </div>
@@ -164,7 +192,12 @@
 layui.use(['layer', 'form', 'jquery'], function(){
     var form = layui.form
   ,$ = layui.jquery;
- 
+  $('#tips-bd').on('mouseenter', function(){
+        var tipsText = '一个家族30分钟搬到哪';
+        layer.tips(tipsText, this, {
+            tipsMore: true
+        });
+  });
 
 });
 </script> 

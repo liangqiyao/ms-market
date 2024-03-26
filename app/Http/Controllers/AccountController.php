@@ -22,7 +22,24 @@ class AccountController extends Controller
         return view('ms/account-list', compact('data', 'page_info'));
     }
     function info(){
-        $data = [];
+        $data = [
+            'equip'=>[
+                ['name'=>'超贝','star'=>22,'stat'=>'30','blame'=>60],
+                ['name'=>'超贝','star'=>22,'stat'=>'30','blame'=>60],
+            ],
+            'eggs'=>[
+                ['level'=>220, 'job'=>'shadowers','power'=>'60','fw'=>'n4m', 'desc'=>'已6转，9件22，AU齐，3BD+3大回 已6转，9件22，AU齐，3BD+3大回 已6转，9件22，AU齐，3BD+3大回 已6转，9件22，AU齐，3BD+3大回'],
+                ['level'=>220, 'job'=>'shadowers','power'=>'60','fw'=>'n4m', 'desc'=>'已6转，9件22，AU齐，3BD+3大回 已6转，9件22，AU齐，3BD+3大回 已6转，9件22，AU齐，3BD+3大回 已6转，9件22，AU齐，3BD+3大回'],
+                ['level'=>220, 'job'=>'shadowers','power'=>'60','fw'=>'n4m', 'desc'=>'已6转，9件22，AU齐，3BD+3大回 已6转，9件22，AU齐，3BD+3大回 已6转，9件22，AU齐，3BD+3大回 已6转，9件22，AU齐，3BD+3大回'],
+            ],
+            'guaika'=>[
+                '30bd','20bd','40bd','party recovery'
+            ],
+            'hexa'=>[
+                'skill'=>12,'master'=>10,'str1'=>10,'str2'=>11,'str3'=>12,'str4'=>13,
+            ],
+            'nuannuan'=>'黑刀、肌肉猫等',
+        ];
         return  view('ms/account-info', compact('data'));
 
     }
